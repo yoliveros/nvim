@@ -5,7 +5,7 @@ theme.setup({
   integrations = {
     nvimtree = {
       transparent_panel = true
-    }
+    },
   }
 })
 
@@ -15,5 +15,3 @@ vim.cmd.colorscheme("catppuccin")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
