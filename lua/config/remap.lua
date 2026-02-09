@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 vim.keymap.set("n", "<C-b>", "<C-^>")
 vim.keymap.set("n", "<leader>ch", "<cmd>silent nohlsearch<CR>")
