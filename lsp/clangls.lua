@@ -3,5 +3,5 @@ return {
     "clangd", "--clang-tidy", "--background-index", "--offset-encodeng=utf-8"
   },
   filetypes = { "c", "h", "cpp", "hpp" },
-  root_markers = { ".clangd", ".clang-format", "compile_commands.json" }
+  root_markers = { ".clang-format", ".clangd", "compile_commands.json" }
 }
