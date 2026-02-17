@@ -14,11 +14,11 @@ return {
   },
   opts = {
     flavour = "mocha",
-    -- flavour = "dragon",
+    -- theme = "dragon", -- wave, dragon
     transparent_background = true,
     float = {
       transparent = true
-    }
+    },
   },
   config = function()
     vim.cmd.colorscheme("catppuccin")
