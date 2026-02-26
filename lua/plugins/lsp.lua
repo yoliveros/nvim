@@ -32,7 +32,7 @@ return {
         "gopls",
         "lua_ls",
         "ts_ls",
-        -- "asm_lsp"
+        "asm_lsp"
       },
       handlers = {
         function(server_name)
