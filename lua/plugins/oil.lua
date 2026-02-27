@@ -3,15 +3,14 @@ return {
   ---@module "oil"
   ---@type oil.SetupOpts
   dependencies = {
-    -- "nvim-mini/mini.nvim"
-    "nvim-tree/nvim-web-devicons"
+    "nvim-mini/mini.nvim"
+    -- "nvim-tree/nvim-web-devicons"
   },
   lazy = false,
   config = function()
     require("oil").setup({
       columns = { "icon" },
       keymaps = {
-        ["<C-h>"] = false,
         ["<C-l>"] = false,
         ["<C-k>"] = false,
         ["<C-j>"] = false,
