@@ -5,75 +5,74 @@ return {
     "nvim-neotest/nvim-nio"
   },
   opts = {
-    configurations = {
-      gdscript = {
-        {
-          type = "godot",
-          request = "launch",
-          name = "Launch scene",
-          project = "${workspaceFolder}"
-        }
-      },
-      cs = {
-        type = "coreclr",
-        name = "launch - netcoredbg",
-        request = "launch",
-        program = function()
-          return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
-        end,
-      },
-      c = {
-        {
-          name = "Launch",
-          type = "gdb",
-          request = "launch",
-          program = function()
-            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-          end,
-          args = {},
-          cwd = "${workspaceFolder}",
-          stopAtBeginningOfMainSubprogram = false
-        },
-        {
-          name = "Select and attach to process",
-          type = "gdb",
-          request = "attach",
-          program = function()
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-          end,
-          pid = function()
-            local name = vim.fn.input('Executable name (filter): ')
-            return require("dap.utils").pick_process({ filter = name })
-          end,
-          cwd = '${workspaceFolder}'
-        },
-        {
-          name = 'Attach to gdbserver :1234',
-          type = 'gdb',
-          request = 'attach',
-          target = 'localhost:1234',
-          program = function()
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-          end,
-          cwd = '${workspaceFolder}'
-        }
-      },
-    },
-    adapters = {
-      coreclr = {
-        type = "executable",
-        command = vim.fn.stdpath("data") .. "/mason/packages/netcoredbg/netcoredbg",
-        args = { "--interpreter=vscode" }
-      },
-      gdb = {
-        type = "executable",
-        command = "gdb",
-        args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
-      },
-    }
   },
   config = function()
     local dap = require("dap")
+
+    dap.adapters.coreclr = {
+      type = "executable",
+      command = vim.fn.stdpath("data") .. "/mason/packages/netcoredbg/netcoredbg",
+      args = { "--interpreter=vscode" }
+    }
+    dap.adapters.gdb = {
+      type = "executable",
+      command = "gdb",
+      args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
+    }
+
+    dap.configurations.gdscript = {
+      {
+        type = "godot",
+        request = "launch",
+        name = "Launch scene",
+        project = "${workspaceFolder}"
+      }
+    }
+    dap.configurations.cs = {
+      type = "coreclr",
+      name = "launch - netcoredbg",
+      request = "launch",
+      program = function()
+        return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+      end,
+    }
+    dap.configurations.c = {
+      {
+        name = "Launch",
+        type = "gdb",
+        request = "launch",
+        program = function()
+          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+        args = {},
+        cwd = "${workspaceFolder}",
+        stopAtBeginningOfMainSubprogram = false
+      },
+      {
+        name = "Select and attach to process",
+        type = "gdb",
+        request = "attach",
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        pid = function()
+          local name = vim.fn.input('Executable name (filter): ')
+          return require("dap.utils").pick_process({ filter = name })
+        end,
+        cwd = '${workspaceFolder}'
+      },
+      {
+        name = 'Attach to gdbserver :1234',
+        type = 'gdb',
+        request = 'attach',
+        target = 'localhost:1234',
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}'
+      }
+    }
+
     local dapui = require("dapui")
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
