@@ -15,6 +15,7 @@ return {
         ["<C-k>"] = false,
         ["<C-j>"] = false,
         ["<C-p>"] = false,
+        ["<C-t>"] = false,
         ["<leader>p"] = "actions.preview",
         ["<C-h>"] = { "actions.toggle_hidden", mode = "n" },
         ["<C-v>"] = { "actions.select", opts = { vertical = true } },
