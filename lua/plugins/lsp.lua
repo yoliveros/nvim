@@ -13,6 +13,10 @@ return {
   },
   config = function()
     require("mason").setup({
+      registries = {
+        "github:mason-org/mason-registry",
+        "github:Crashdummyy/mason-registry",
+      },
       ui = {
         icons = {
           package_installed = "✓",
@@ -32,7 +36,9 @@ return {
         "gopls",
         "lua_ls",
         "ts_ls",
-        "asm_lsp"
+        "asm_lsp",
+        -- "roslyn",
+        -- "netcoredbg"
       },
       handlers = {
         function(server_name)
