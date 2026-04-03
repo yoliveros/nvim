@@ -67,7 +67,11 @@ return {
           end
         end,
         cwd = "${workspaceFolder}",
-        stopAtEntry = false
+        stopAtEntry = false,
+        args = function()
+          local args_str = vim.fn.input("Args: ")
+          return vim.split(args_str, " +")
+        end
       },
       -- {
       -- name = 'Attach to gdbserver :1234',
