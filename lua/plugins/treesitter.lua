@@ -11,7 +11,6 @@ return {
       "lua",
       "c",
       "go",
-      "bash",
       "javascript",
       "typescript",
       "html"
