@@ -13,10 +13,6 @@ return {
   },
   config = function()
     require("mason").setup({
-      -- registries = {
-      --   "github:mason-org/mason-registry",
-      --   "github:Crashdummyy/mason-registry",
-      -- },
       ui = {
         icons = {
           package_installed = "✓",
@@ -85,23 +81,6 @@ return {
         { name = "buffer" }
       })
     })
-
-    -- cmp.setup.cmdline({ "/", "?" }, {
-    --   mapping = cmp.mapping.preset.cmdline(),
-    --   source = {
-    --     { name = "buffer" }
-    --   }
-    -- })
-
-    -- cmp.setup.cmdline(":", {
-    --   mapping = cmp.mapping.preset.cmdline(),
-    --   source = cmp.config.sources({
-    --     { name = "path" }
-    --   }, {
-    --     { name = "cmdline" }
-    --   }),
-    --   matching = { disallow_symbol_nonprefix_matching = false }
-    -- })
 
     -- Lsp config and format on save
     vim.api.nvim_create_autocmd("LspAttach", {
